@@ -56,6 +56,12 @@
                     <img src="@icons.YouTube" alt="YouTube" class="social-icon" />
                 </a>
             }
+            @if (string.IsNullOrWhiteSpace(property.Twitch) is false)
+            {
+                <a href="https://twitch.com/@(property.Twitch)" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.Twitch" alt="Twitch" class="social-icon" />
+                </a>
+            }
         </div>
         <p class="small" style="margin-top: 0; color: white;">Created by @property.Name</p>
     }

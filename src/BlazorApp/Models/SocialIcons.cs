@@ -10,4 +10,6 @@ public class SocialIcons
     public string Medium { get; set; } = string.Empty;
     public string Twitter { get; set; } = string.Empty;
     public string YouTube { get; set; } = string.Empty;
+    public string Twitch { get; set; } = string.Empty;
+    public string Discord { get; set; } = string.Empty;
 }
