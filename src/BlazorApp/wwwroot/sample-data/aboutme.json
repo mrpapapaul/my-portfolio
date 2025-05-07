@@ -1,12 +1,12 @@
 {
-  "description": "I'm a UI/UX student studying at Barnett Technical University. I enjoy creating unique and simplistic user interfaces in creative ways.",
+  "description": "I'm a Game Programming graduate from the Northern Alberta Institute of Technology. I enjoy creating unique games in innovative ways.",
   "skills": [
-    "Web design",
-    "User experience",
-    "Inclusive design",
-    "Focus group testing",
-    "Mobile user interfaces",
-    "Graphic design"
+    "C#",
+    "Unity",
+    "GitHub",
+    "Quality Assurance/Quality Control",
+    "Mobile Build",
+    "Computer Hardware Installation"
   ],
-  "detailOrQuote": "I am passionate about solving problems in new creative ways to drive innovation. By leveraging my UI/UX experience I continually look for new and better ways to make tech accessible by all."
+  "detailOrQuote": "I am passionate about building creative and polished games through clean code, continuous testing, and technical problem-solving. With a strong foundation in Unity, C#, and quality assurance, I aim to deliver smooth, engaging player experiences across platforms."
 }

@@ -7,29 +7,17 @@
     }
     else if (icons is not null)
     {
-        <div style="display: flex; justify-content: center; gap: 2.5rem;">
+            <div class="social-icons-row" style="display: flex; justify-content: center; gap: 2.5rem;">
             @if (string.IsNullOrWhiteSpace(property.Email) is false)
             {
                 <a href="mailto:@(property.Email)">
                     <img src="@icons.Email" alt="email" class="social-icon" />
                 </a>
             }
-            @if (string.IsNullOrWhiteSpace(property.DevDotTo) is false)
+            @if (string.IsNullOrWhiteSpace(property.WhatsApp) is false)
             {
-                <a href="https://dev.to/@(property.DevDotTo)" target="_blank" rel="noopener noreferrer">
-                    <img src="@icons.DevDotTo" alt="Dev.to" class="social-icon" />
-                </a>
-            }
-            @if (string.IsNullOrWhiteSpace(property.GitHub) is false)
-            {
-                <a href="https://github.com/@(property.GitHub)" target="_blank" rel="noopener noreferrer">
-                    <img src="@icons.GitHub" alt="GitHub" class="social-icon" />
-                </a>
-            }
-            @if (string.IsNullOrWhiteSpace(property.Instagram) is false)
-            {
-                <a href="https://instagram.com/@(property.Instagram)" target="_blank" rel="noopener noreferrer">
-                    <img src="@icons.Instagram" alt="Instagram" class="social-icon" />
+                <a href="sms:@(property.WhatsApp)" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.WhatsApp" alt="WhatsApp" class="social-icon" />
                 </a>
             }
             @if (string.IsNullOrWhiteSpace(property.LinkedIn) is false)
@@ -38,10 +26,37 @@
                     <img src="@icons.LinkedIn" alt="LinkedIn" class="social-icon" />
                 </a>
             }
+            @if (string.IsNullOrWhiteSpace(property.GitHub) is false)
+            {
+                <a href="https://github.com/@(property.GitHub)" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.GitHub" alt="GitHub" class="social-icon" />
+                </a>
+            }
+            @if (string.IsNullOrWhiteSpace(property.DevDotTo) is false)
+            {
+                <a href="https://dev.to/@(property.DevDotTo)" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.DevDotTo" alt="Dev.to" class="social-icon" />
+                </a>
+            }
+            @if (string.IsNullOrWhiteSpace(property.Instagram) is false)
+            {
+                <a href="https://instagram.com/@(property.Instagram)" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.Instagram" alt="Instagram" class="social-icon" />
+                </a>
+            }
             @if (string.IsNullOrWhiteSpace(property.Medium) is false)
             {
                 <a href="https://medium.com/@@@(property.Medium)" target="_blank" rel="noopener noreferrer">
                     <img src="@icons.Medium" alt="Medium" class="social-icon" />
+                </a>
+            }
+            </div>
+
+            <div class="social-icons-row" style="display: flex; justify-content: center; gap: 2.5rem;">
+            @if (string.IsNullOrWhiteSpace(property.Facebook) is false)
+            {
+                <a href="https://facebook.com/@(property.Facebook)" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.Facebook" alt="Facebook" class="social-icon" />
                 </a>
             }
             @if (string.IsNullOrWhiteSpace(property.Twitter) is false)
@@ -68,8 +83,26 @@
                     <img src="@icons.Discord" alt="Discord" class="social-icon" />
                 </a>
             }
+            @if (string.IsNullOrWhiteSpace(property.Steam) is false)
+            {
+                <a href="https://steamcommunity.com/id/@(property.Steam)" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.Steam" alt="Steam" class="social-icon" />
+                </a>
+            }
+            @if (string.IsNullOrWhiteSpace(property.ItchIo) is false)
+            {
+                <a href="https://@(property.ItchIo).itch.io" target="_blank" rel="noopener noreferrer">
+                    <img src="@icons.ItchIo" alt="ItchIo" class="social-icon" />
+                </a>
+            }
         </div>
-        <p class="small" style="margin-top: 0; color: white;">Created by @property.Name</p>
+        <p class="Small" style="margin-top: 0; color: #1B4D3E;">Icons taken from
+            <a href="https://www.svgrepo.com" target="_blank" rel="noopener noreferrer">
+                <img src="@icons.SvgRepo" alt="SvgRepo" class="social-icon" style="width: 100px; height: 100px;" />
+            </a>
+        </p>
+        <p class="small" style="margin-top: 0; color: #1B4D3E;">Created by <b>@property.Name</b></p>
+
     }
 </div>
 

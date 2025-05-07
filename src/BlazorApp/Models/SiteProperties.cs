@@ -14,4 +14,9 @@ public class SiteProperties
     public string YouTube { get; set; } = string.Empty;
     public string Twitch { get; set; } = string.Empty;
     public string Discord { get; set; } = string.Empty;
+    public string Facebook { get; set; } = string.Empty;
+    public string Steam { get; set; } = string.Empty;
+    public string ItchIo { get; set; } = string.Empty;
+    public string WhatsApp { get; set; } = string.Empty;
+    public string SvgRepo { get; set; } = string.Empty;
 }
