@@ -1,6 +1,24 @@
-<div id="header">
-    <a href="#home" target="_top">Home</a>
+<div id="header" style="background-color: @PrimaryColor;">
+    <NavLink href="/" target="_top">Home</NavLink>
     <a href="#about" target="_top">About</a>
-    <a href="#portfolio" target="_top">Portfolio</a>
+    <div class="dropdown">
+    <a href="#portfolio" class="dropbtn" target="_top">Portfolio</a>
+    <div class="dropdown-content">
+        <a href="/projects">Projects</a>
+        <a href="/schoolworks">School Works</a>
+        <a href="/others">Others</a>
+    </div>
+    </div>
     <a href="#contact" target="_top">Contact</a>
 </div>
+
+@code {
+    [Parameter, EditorRequired]
+    public required HttpClient Http { get; set; }
+
+    [Parameter]
+    public string PrimaryColor { get; set; } = string.Empty;
+
+    [Parameter]
+    public string SecondaryColor { get; set; } = string.Empty;
+}
