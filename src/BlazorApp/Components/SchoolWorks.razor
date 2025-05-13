@@ -2,11 +2,70 @@
 
 <div class="page-content">
     <h1>School Works</h1>
-    <p>This page will showcase every school projects I've finished during my time at NAIT.</p>
+    <p>This page will showcase every school project I've finished during my time at NAIT.</p>
 </div>
 
-<iframe src="https://shimmering-mooncake-960a4b.netlify.app/"
-        width="960"
-        height="600"
-        style="border: none;">
+<select @onchange="OnProjectChange">
+    <option value="Capstone">IV - Capstone Project</option>
+    <option value="GamePublishing">IV - Game Programming & Publishing</option>
+    <option value="GameScripting">IV - Game Programming Level Scripting</option>
+    <option value="GameCodeAssets">III - Game Programming Code Assets</option>
+    <option value="AI">III - Artificial Intelligence</option>
+    <option value="GameEssentials">II - Game Programming Essentials</option>
+    <option value="GameDevTools">II - Game Development Tools & Scripting</option>
+</select>
+
+@if (selectedProject == "GameScripting")
+{
+    <div class="radio-container">
+        @foreach (var game in gameScriptingProjects)
+        {
+            <label>
+                <input type="radio" name="gamescripting" value="@game.Url"
+                       @onchange="OnSubProjectChange"
+                       checked="@(selectedUrl == game.Url)" />
+                @game.Name
+            </label>
+        }
+    </div>
+}
+
+<iframe src="@selectedUrl"
+        width="95%"
+        height="800"
+        style="border: none; margin-top: 1rem;">
 </iframe>
+
+@code {
+    private string selectedProject = "Capstone";
+    private string selectedUrl = "https://shimmering-mooncake-960a4b.netlify.app/";
+
+    private List<(string Name, string Url)> gameScriptingProjects = new()
+    {
+        ("Lava Run", "https://example.com/lava-run"),
+        ("Zombie Rush", "https://example.com/zombie-rush")
+    };
+
+    private void OnProjectChange(ChangeEventArgs e)
+    {
+        selectedProject = e.Value?.ToString() ?? "Capstone";
+
+        if (selectedProject == "Capstone")
+        {
+            selectedUrl = "https://shimmering-mooncake-960a4b.netlify.app/";
+        }
+        else if (selectedProject == "Mini")
+        {
+            selectedUrl = "https://example.com/assignment-demo";
+        }
+        else if (selectedProject == "GameScripting" && gameScriptingProjects.Count > 0)
+        {
+            selectedUrl = gameScriptingProjects[0].Url; // default to first
+        }
+    }
+
+    private void OnSubProjectChange(ChangeEventArgs e)
+    {
+        selectedUrl = e.Value?.ToString() ?? selectedUrl;
+    }
+}
