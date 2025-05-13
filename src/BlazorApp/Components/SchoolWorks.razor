@@ -30,15 +30,56 @@
     </div>
 }
 
-<iframe src="@selectedUrl"
-        width="95%"
-        height="800"
-        style="border: none; margin-top: 1rem;">
-</iframe>
+<div class="game-section">
+    <div class="game-description">
+        <h3>@CurrentProject?.Name</h3>
+        <p>@CurrentProject?.Description</p>
+    </div>
+
+    <div class="game-preview">
+        <iframe src="@selectedUrl"
+                width="100%"
+                height="600"
+                style="border: none;">
+                allowfullscreen
+                mozallowfullscreen="true"
+                webkitallowfullscreen="true">
+        </iframe>
+    </div>
+
+    <div class="game-contribution">
+        <h3>Game Info</h3>
+        @((MarkupString)CurrentProject?.Contribution)
+    </div>
+</div>
 
 @code {
     private string selectedProject = "Capstone";
     private string selectedUrl = "https://shimmering-mooncake-960a4b.netlify.app/";
+
+    private record ProjectInfo(string Name, string Url, string Description, string Contribution);
+
+    private Dictionary<string, ProjectInfo> projects = new()
+    {
+        ["Capstone"] = new ProjectInfo(
+            "Capstone Project (DMIT-2590)",
+            "https://shimmering-mooncake-960a4b.netlify.app/",
+            "This course will bring together the knowledge and skills acquired during the first, second and third semesters of the DMIT program. Students or student teams will develop a project from analysis, through design, to development for an industry client. To further simulate the business environment, the teams will present their findings through both oral presentation and written documentation.",
+            "We collaborated with <a href=\"https://duffyspuppets.com/imagin.html\" target=\"_blank\">Duffy’s Puppets</a> as our client. I was primarily responsible for the main menu system, including character selection, audio sliders, credits, client web link, unlockables, and pause functionality. I also created simple animations for the start and main menu screens, and developed the NPC dialog system with win/lose conditions for the boss battles, and handled test builds for both Android and iOS."
+        ),
+        ["GamePublishing"] = new ProjectInfo(
+            "Game Programming & Publishing (DMIT-2511)",
+            "https://shimmering-pony-5421c9.netlify.app/",
+            "Students will work in groups to learn how to establish and follow coding standards. They will use source control to keep assets organized and updated while working on large group projects.",
+            "Handled mobile builds, asset optimization, and UI polish for user-friendly deployment."
+        ),
+        ["GameScripting"] = new ProjectInfo(
+            "Game Programming Level Scripting (DMIT-2017)",
+            "https://example.com/lava-run",
+            "This course will provide an exploration of an integrated authoring tool that enables the creation of games in an industry-leading 3D engine. Students will learn to write scripts that create and control the game world.",
+            "Designed trigger zones, scripted interactive doors and AI patrol logic using Unity."
+        )
+    };
 
     private List<(string Name, string Url)> gameScriptingProjects = new()
     {
@@ -50,17 +91,13 @@
     {
         selectedProject = e.Value?.ToString() ?? "Capstone";
 
-        if (selectedProject == "Capstone")
+        if (selectedProject == "GameScripting" && gameScriptingProjects.Count > 0)
         {
-            selectedUrl = "https://shimmering-mooncake-960a4b.netlify.app/";
+            selectedUrl = gameScriptingProjects[0].Url;
         }
-        else if (selectedProject == "Mini")
+        else if (projects.TryGetValue(selectedProject, out var info))
         {
-            selectedUrl = "https://example.com/assignment-demo";
-        }
-        else if (selectedProject == "GameScripting" && gameScriptingProjects.Count > 0)
-        {
-            selectedUrl = gameScriptingProjects[0].Url; // default to first
+            selectedUrl = info.Url;
         }
     }
 
@@ -68,4 +105,6 @@
     {
         selectedUrl = e.Value?.ToString() ?? selectedUrl;
     }
+
+    private ProjectInfo? CurrentProject => projects.TryGetValue(selectedProject, out var info) ? info : null;
 }
