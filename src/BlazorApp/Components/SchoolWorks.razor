@@ -49,7 +49,7 @@
 
     <div class="game-contribution">
         <h3>Game Info</h3>
-        @((MarkupString)CurrentProject?.Contribution)
+        @((MarkupString)(CurrentProject?.Contribution ?? ""))
     </div>
 </div>
 
