@@ -1,12 +1,14 @@
+@inject NavigationManager NavigationManager
+
 <div id="header" style="background-color: @PrimaryColor;">
-    <NavLink href="/" target="_top">Home</NavLink>
-    <NavLink href="/#about" target="_top">About</NavLink>
+    <NavLink href="@NavigationManager.BaseUri" target="_top">Home</NavLink>
+    <NavLink href="@($"{NavigationManager.BaseUri}#about")" target="_top">About</NavLink>
     <div class="dropdown">
-    <a href="#portfolio" class="dropbtn" target="_top">Portfolio</a>
+    <a href="@($"{NavigationManager.BaseUri}#portfolio")" class="dropbtn" target="_top">Portfolio</a>
     <div class="dropdown-content">
-        <a href="/projects">Projects (TBD)</a>
-        <a href="/schoolworks">School Works</a>
-        <a href="/others">Others (TBD)</a>
+        <a href="@($"{NavigationManager.BaseUri}projects")">Projects (TBD)</a>
+        <a href="@($"{NavigationManager.BaseUri}schoolworks")">School Works</a>
+        <a href="@($"{NavigationManager.BaseUri}others")">Others (TBD)</a>
     </div>
     </div>
     <NavLink href="#contact" target="_top">Contact</NavLink>
